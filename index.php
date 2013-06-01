@@ -71,6 +71,12 @@
 		  						};
 		  	var access_chart = new google.visualization.GeoChart(document.getElementById('access_chart'));
         	access_chart.draw(access_data, access_options);
+        	
+        	//add a title above the geochart
+        	var newEl = document.createElement("h3");
+			newEl.innerHTML=access_options.title;
+			var o =document.getElementById("access_chart")
+			o.insertBefore(newEl,o.firstChild);
 		}
 		</script>
 		<TITLE>GovHack</TITLE>
