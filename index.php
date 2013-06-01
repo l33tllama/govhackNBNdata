@@ -13,6 +13,31 @@
 			
 			function drawChart() {
 			//Continue to update chart if day is today
+			/*
+			 For an updater loop:
+			 onload(timer(30sec));
+			 timer
+			 {
+			  $.ajax(biannual_usage_totals.php?date=today)
+			  timer(30sec);
+			 }
+			 
+			 For a button bar to switch charts:
+			 <ul>
+			 <li><button></li>
+			 </ul>
+			 button.onClick
+			 {
+			 graph=my_chart;
+			 graph.draw;
+			 }
+			 
+			 For an info panel to monitor the cursor:
+			 graph.onEnter{
+			 selected=me;
+			 sidebar.stats=mystats;
+			 }
+			*/
 			
 			// Create the data table.
 		    var jsonData = $.ajax({
