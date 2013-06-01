@@ -24,7 +24,7 @@
 			var data = new google.visualization.DataTable(jsonData);
 			
 			//Set chart options
-		  	var options = { 'title':'Australian Internet Usage by Service Type ',
+		  	var options = { 'title':'Australian Internet Usage in TB by Service Type',
 		    	              'width':800,
 		        	          'height':640,
 		            	      vAxis :{maxValue:16},
