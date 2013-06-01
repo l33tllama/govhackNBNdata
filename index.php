@@ -1,5 +1,8 @@
 <?php
 	//todo
+	require_once('php/include.php');
+	
+	
  ?>
 <HTML>
 	<HEAD>
@@ -7,6 +10,6 @@
 	</HEAD>
 	<BODY>
 		Hello World!
+		<?php debug($_SERVER); ?>
 	</BODY>
-	
 </HTML>
