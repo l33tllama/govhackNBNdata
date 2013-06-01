@@ -1,13 +1,12 @@
-<?php
-	//todo
- ?>
+<!DOCTYPE HTML>
 <HTML>
 	<HEAD>
+		<link rel="stylesheet" type="text/css" href="css/main.css"></link>
 		<script type="text/javascript" src = "../js/jsapi.js"></script>
 		<script type="text/javascript" src = "../js/jquery-1.9.1.min.js"></script>
 		<script>
 			// Load the Visualization API and the piechart package.
-			google.load('visualization', '1.0', {'packages':['corechart']});
+			google.load('visualization', '1.0', {'packages':['corechart', 'geochart']});
 			
 			// Set a callback to run when the Google Visualization API is loaded.
 			google.setOnLoadCallback(drawChart);
@@ -31,6 +30,14 @@
 			
 			var data_speeds = new google.visualization.DataTable(jsonData);
 			
+			jsonData = $.ajax({
+		    	url: "./php/ajax/get_state_net_access_data.php",
+		      	dataType:"json",
+		      	async: false
+		    }).responseText;
+		    
+		    var access_data = new google.visualization.DataTable(jsonData);
+			
 			//Set chart options
 		  	var options_usage = { 'title':'Australian Internet Usage in TB by Service Type',
 		    	              'width':800,
@@ -44,6 +51,7 @@
 		        	          'height':640,
 		            	      vAxis :{maxValue:16},
 		                	  tooltip: {isHtml: true},
+		                	  trendlines: { 0: {} }
 						  	};
 		
 		  // Instantiate and draw our chart, passing in some options.
@@ -52,14 +60,35 @@
 		  	
 		  	var speeds_chart = new google.visualization.LineChart(document.getElementById('speeds_chart'));
 		  	speeds_chart.draw(data_speeds, options_speeds);
+		  	
+		  	var access_options = { 'title':'Households and Small Businesses connected', 
+		  						'width': 800,
+		  						'height': 640,
+		  						region: 'AU',
+		  						displayMode: 'markers'
+		  						};
+		  	var access_chart = new google.visualization.GeoChart(document.getElementById('access_chart'));
+        	access_chart.draw(access_data, access_options);
 		}
 		</script>
 		<TITLE>GovHack</TITLE>
 	</HEAD>
 	<BODY>
-		Hello World!
-		<div id="usage_chart">Nope.php</div>
-		<div id="speeds_chart">Nope.php</div>
+		<div id="heading">
+			<h1 id="heading">Internet Stuff</h1>
+		</div>
+		<div id="wrapper">
+			<div id = "main">
+				<table>
+					<tr>
+						<td id = "usage_chart"></td>
+						<td id = "speeds_chart">Nope.php</td>
+					</tr>
+					<tr>
+						<td id = "access_chart"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
 	</BODY>
-	
 </HTML>
