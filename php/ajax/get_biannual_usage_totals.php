@@ -9,5 +9,12 @@
  * 
  * 
  */
+ $con = mysqli_connect("127.0.0.1", "govhacker", "govhacktas", "govhack");
+ 
+ if (mysqli_connect_errno($con)) {
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	} else {
+		echo "Connection success!";
+	}
  $sql = "";
 ?>
