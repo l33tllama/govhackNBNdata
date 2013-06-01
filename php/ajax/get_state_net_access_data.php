@@ -22,9 +22,9 @@
 		$qry = mysqli_query($con, "SELECT * FROM `households_in_000s_with_net_by_state` , `states` WHERE `states`.`id` =  `state_id`"); 	
 		
 		while ($r = mysqli_fetch_assoc($qry)) {
-			$state = $r['fullname'];
-			$has_net = $r['with'];
-			$row_entry = array("c" => array(array("v" => $state, "f" => NULL), array("v" => (int)$has_net, "f" => null)));
+			$state = "AU-" . $r['abbreviation'];
+			$has_net = 100 * ((int) $r['with'] / (int)$r['total_households']);
+			$row_entry = array("c" => array(array("v" => $state, "f" => NULL), array("v" => $has_net, "f" => null)));
 			array_push($google_graph_json_data['rows'], $row_entry);
 		}
 		

@@ -65,7 +65,9 @@
 		  						'width': 800,
 		  						'height': 640,
 		  						region: 'AU',
-		  						displayMode: 'markers'
+		  						displayMode: 'regions',
+		  						resolution: 'provinces',
+		  						numberFormat:'.##'
 		  						};
 		  	var access_chart = new google.visualization.GeoChart(document.getElementById('access_chart'));
         	access_chart.draw(access_data, access_options);
