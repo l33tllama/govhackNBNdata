@@ -21,10 +21,25 @@
 		      	dataType:"json",
 		      	async: false
 		    }).responseText;
-			var data = new google.visualization.DataTable(jsonData);
+			var data_usage = new google.visualization.DataTable(jsonData);
+			
+			jsonData = $.ajax({
+		    	url: "./php/ajax/get_biannual_internet_speeds.php",
+		      	dataType:"json",
+		      	async: false
+		    }).responseText;
+			
+			var data_speeds = new google.visualization.DataTable(jsonData);
 			
 			//Set chart options
-		  	var options = { 'title':'Australian Internet Usage in TB by Service Type',
+		  	var options_usage = { 'title':'Australian Internet Usage in TB by Service Type',
+		    	              'width':800,
+		        	          'height':640,
+		            	      vAxis :{maxValue:16},
+		                	  tooltip: {isHtml: true},
+						  	};
+						  	//Set chart options
+		  	var options_speeds = { 'title':"Australian Internet Speeds in 000's of connections by Speed",
 		    	              'width':800,
 		        	          'height':640,
 		            	      vAxis :{maxValue:16},
@@ -32,15 +47,19 @@
 						  	};
 		
 		  // Instantiate and draw our chart, passing in some options.
-		  	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-		  	chart.draw(data, options);
+		  	var usage_chart = new google.visualization.LineChart(document.getElementById('usage_chart'));
+		  	usage_chart.draw(data_usage, options_usage);
+		  	
+		  	var speeds_chart = new google.visualization.LineChart(document.getElementById('speeds_chart'));
+		  	speeds_chart.draw(data_speeds, options_speeds);
 		}
 		</script>
 		<TITLE>GovHack</TITLE>
 	</HEAD>
 	<BODY>
 		Hello World!
-		<div id="chart_div">Nope.php</div>
+		<div id="usage_chart">Nope.php</div>
+		<div id="speeds_chart">Nope.php</div>
 	</BODY>
 	
 </HTML>
