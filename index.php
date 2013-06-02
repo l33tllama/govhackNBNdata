@@ -5,6 +5,56 @@
 		<script type="text/javascript" src = "js/jsapi.js"></script>
 		<script type="text/javascript" src = "js/jquery-1.9.1.min.js"></script>
 		<script>
+var orig_left = $('#main').scrollLeft();
+var orig_top = $('#main').scrollTop();
+var cur_left = $('#main').scrollLeft();
+var cur_top = $('#main').scrollTop();
+var new_left = $('#main').scrollLeft();
+var new_top = $('#main').scrollTop();
+
+var target;
+
+$('#main').scroll(function(event)
+{
+    event.preventDefault();
+    
+    cur_left = $('#main').scrollLeft();
+    cur_top = $('#main').scrollTop();
+    new_left = $('#main').scrollLeft();
+    new_top = $('#main').scrollTop();
+    
+    check_scroll();
+    
+    $('#main').scrollLeft(new_left);
+    $('#main').scrollTop(new_top);
+    
+    orig_left = $('#main').scrollLeft();
+    orig_top = $('#main').scrollTop();
+});
+
+function check_scroll()
+{
+    
+    if (orig_left != cur_left)
+    {
+        target = 'left';
+        new_top = cur_left;
+        new_left = orig_left;
+    }
+    else
+    {
+        target = 'top';
+    }
+    
+    $('#console').html(cur_left + ' | ' + cur_top + ' | ' + target);
+    console.log(cur_left + ' | ' + cur_top + ' | ' + target, ' ');
+    
+    if (orig_top != cur_top && target == 'top')
+    {
+        new_left = cur_top;
+        new_top = orig_top;
+    }
+}
 // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages':['corechart', 'geochart']});
 
@@ -91,7 +141,7 @@ function drawChart()
 
 	var access_options = { 'title':'Households and Small Businesses connected', 
 						'width': 800,
-						'height': 640,
+						'height': 575,
 						region: 'AU',
 						displayMode: 'regions',
 						resolution: 'provinces',
@@ -135,20 +185,30 @@ function showChart(chart)
 		<TITLE>GovHack</TITLE>
 	</HEAD>
 	<BODY>
-		<div id="heading">
-			<h1 id="heading">Internet Stuff</h1>
-		</div>
+		
 		<div id="wrapper">
+			<div id="heading">
+				<h1 id="heading">Internet Stuff</h1>
+			</div>
 			<div id = "main">
+				<table>
+					<tr>
+						<td id="usage_chart"></td><td id="speeds_chart"></td><td id="access_chart"></td>
+					</tr>
+				</table>
 				<NOSCRIPT>Javascript is required for this page to function.</NOSCRIPT>
+				<!--
 				<INPUT type="button" value="Usage" onClick="showChart('usage')"/>&nbsp;
 				<INPUT type="button" value="Speeds" onClick="showChart('speeds')"/>&nbsp;
 				<INPUT type="button" value="Access" onClick="showChart('access')"/>
 				
 				<DIV id = "usage_chart"></DIV>
 				<DIV id = "speeds_chart" style="display:none"></DIV>
-				<DIV id = "access_chart" style="display:none"></DIV>
+				<DIV id = "access_chart" style="display:none"></DIV> -->
 				
+			</div>
+			<div id = "footer">
+				Powered by Google Chart API.
 			</div>
 		</div>
 	</BODY>
