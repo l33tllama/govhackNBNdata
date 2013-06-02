@@ -189,7 +189,8 @@ header('Location: http://detectmobilebrowser.com/mobile');
 					<NOSCRIPT>Javascript is required for this page to function.</NOSCRIPT>
 					<INPUT type="button" value="Usage" onClick="showChart('usage')"/>&nbsp;
 					<INPUT type="button" value="Speeds" onClick="showChart('speeds')"/>&nbsp;
-					<INPUT type="button" value="Access" onClick="showChart('access')"/>
+					<INPUT type="button" value="Access" onClick="showChart('access')"/>&nbsp;
+					<INPUT type="button" value="GovHack Tas Reliability" onClick="showChart('rel')"/>
 				
 					<DIV id = "usage_chart"></DIV>
 					<DIV id = "speeds_chart" style="display:none; position: relative;"></DIV>
