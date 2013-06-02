@@ -10,7 +10,8 @@ html{
 }
 div#wrapper{
 	margin: 10px 10px 10px 10px;
-	width: 1616px;
+	/*width: 1616px;*/
+	padding-left: 4px;
 	border: 1px solid;
 	background-color: #BCBCBC;
 	border-radius: 8px;
