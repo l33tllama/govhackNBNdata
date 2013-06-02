@@ -195,6 +195,7 @@ header('Location: http://detectmobilebrowser.com/mobile');
 					<DIV id = "usage_chart"></DIV>
 					<DIV id = "speeds_chart" style="display:none; position: relative;"></DIV>
 					<DIV id = "access_chart" style="display:none; position: relative;"></DIV>
+					<DIV id = "rel_chart" style="display:none"></DIV>
 				</center>
 			</div>
 			<div id = "footer">
