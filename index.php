@@ -93,7 +93,7 @@
 		  						displayMode: 'regions',
 		  						resolution: 'provinces',
 		  						numberFormat:'.##',
-		  						colorAxis: {colors: ['blue', 'green']}
+		  						colorAxis: {colors: ['#9999FF', '#00AA00']}
 		  						};
 		  	var access_chart = new google.visualization.GeoChart(document.getElementById('access_chart'));
         	access_chart.draw(access_data, access_options);
