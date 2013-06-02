@@ -12,7 +12,6 @@ google.load('visualization', '1.0', {'packages':['corechart', 'geochart']});
 // Set a callback to run when the Google Visualization API is loaded.
 google.setOnLoadCallback(drawChart);
 
-var usage_chart=null, speeds_chart=null, access_chart=null;
 var last_visible = 'usage';
 
 var desktop_size = 1000;
@@ -111,6 +110,28 @@ function drawChart()
 	newEl.innerHTML=access_options.title;
 	var o =document.getElementById("access_chart")
 	o.insertBefore(newEl,o.firstChild);
+	
+	//internet reliability
+	jsonData = $.ajax({
+		url: "./php/ajax/get_govhack_tas_netreliability.php",
+		dataType:"json",
+		async: false
+	}).responseText;
+
+	var rel_data = new google.visualization.DataTable(jsonData);
+	
+	var rel_options = { 'title':"GovHack Hobart Internet Reliability Graph for Saturday 1st June 2013",
+					  'width':800,
+					  'height':640,
+					  vAxis :{maxValue:100},
+					  hAxis: {title: 'Hour'},
+					  tooltip: {isHtml: true},
+					  trendlines: { 0: {} }
+					};
+	
+	// Instantiate and draw our chart, passing in some options.
+	rel_chart = new google.visualization.LineChart(document.getElementById('rel_chart'));
+	rel_chart.draw(rel_data, rel_options);
 }
 
 function showChart(chart)
@@ -134,6 +155,12 @@ function showChart(chart)
 													$("#access_chart").fadeIn();
 											});
 			last_visible = 'access';
+			break;
+		case 'rel':
+			$(fade_chart).fadeOut(400, function(){
+													$("#rel_chart").fadeIn();
+											});
+			last_visible = 'rel';
 			break;
 	}
 }
