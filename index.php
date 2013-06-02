@@ -5,56 +5,7 @@
 		<script type="text/javascript" src = "js/jsapi.js"></script>
 		<script type="text/javascript" src = "js/jquery-1.9.1.min.js"></script>
 		<script>
-var orig_left = $('#main').scrollLeft();
-var orig_top = $('#main').scrollTop();
-var cur_left = $('#main').scrollLeft();
-var cur_top = $('#main').scrollTop();
-var new_left = $('#main').scrollLeft();
-var new_top = $('#main').scrollTop();
 
-var target;
-
-$('#main').scroll(function(event)
-{
-    event.preventDefault();
-    
-    cur_left = $('#main').scrollLeft();
-    cur_top = $('#main').scrollTop();
-    new_left = $('#main').scrollLeft();
-    new_top = $('#main').scrollTop();
-    
-    check_scroll();
-    
-    $('#main').scrollLeft(new_left);
-    $('#main').scrollTop(new_top);
-    
-    orig_left = $('#main').scrollLeft();
-    orig_top = $('#main').scrollTop();
-});
-
-function check_scroll()
-{
-    
-    if (orig_left != cur_left)
-    {
-        target = 'left';
-        new_top = cur_left;
-        new_left = orig_left;
-    }
-    else
-    {
-        target = 'top';
-    }
-    
-    $('#console').html(cur_left + ' | ' + cur_top + ' | ' + target);
-    console.log(cur_left + ' | ' + cur_top + ' | ' + target, ' ');
-    
-    if (orig_top != cur_top && target == 'top')
-    {
-        new_left = cur_top;
-        new_top = orig_top;
-    }
-}
 // Load the Visualization API and the piechart package.
 google.load('visualization', '1.0', {'packages':['corechart', 'geochart']});
 
@@ -62,6 +13,7 @@ google.load('visualization', '1.0', {'packages':['corechart', 'geochart']});
 google.setOnLoadCallback(drawChart);
 
 var usage_chart=null, speeds_chart=null, access_chart=null;
+var last_visible = 'usage';
 
 function drawChart() 
 {
@@ -160,23 +112,25 @@ function drawChart()
 
 function showChart(chart)
 {
-	//alert('show '+chart);
-	switch(chart)
-	{
+	fade_chart = "#" + last_visible + "_chart";
+	switch(chart){
 		case 'usage':
-			document.getElementById('usage_chart').style.display='block';
-			document.getElementById('speeds_chart').style.display='none';
-			document.getElementById('access_chart').style.display='none';
+			$(fade_chart).fadeOut(400, function(){
+													$("#usage_chart").fadeIn();
+											});
+			last_visible = 'usage';
 			break;
 		case 'speeds':
-			document.getElementById('usage_chart').style.display='none';
-			document.getElementById('speeds_chart').style.display='block';
-			document.getElementById('access_chart').style.display='none';
+			$(fade_chart).fadeOut(400, function(){
+													$("#speeds_chart").fadeIn();
+											});
+			last_visible = 'speeds';
 			break;
 		case 'access':
-			document.getElementById('usage_chart').style.display='none';
-			document.getElementById('speeds_chart').style.display='none';
-			document.getElementById('access_chart').style.display='block';
+			$(fade_chart).fadeOut(400, function(){
+													$("#access_chart").fadeIn();
+											});
+			last_visible = 'access';
 			break;
 	}
 }
@@ -191,20 +145,19 @@ function showChart(chart)
 				<h1 id="heading">Internet Stuff</h1>
 			</div>
 			<div id = "main">
-				<table>
+				<!--<table>
 					<tr>
 						<td id="usage_chart"></td><td id="speeds_chart"></td><td id="access_chart"></td>
 					</tr>
-				</table>
+				</table> -->
 				<NOSCRIPT>Javascript is required for this page to function.</NOSCRIPT>
-				<!--
 				<INPUT type="button" value="Usage" onClick="showChart('usage')"/>&nbsp;
 				<INPUT type="button" value="Speeds" onClick="showChart('speeds')"/>&nbsp;
 				<INPUT type="button" value="Access" onClick="showChart('access')"/>
 				
 				<DIV id = "usage_chart"></DIV>
-				<DIV id = "speeds_chart" style="display:none"></DIV>
-				<DIV id = "access_chart" style="display:none"></DIV> -->
+				<DIV id = "speeds_chart" style="display:none; position: relative;"></DIV>
+				<DIV id = "access_chart" style="display:none; position: relative;"></DIV>
 				
 			</div>
 			<div id = "footer">
