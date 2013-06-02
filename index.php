@@ -92,7 +92,8 @@
 		  						region: 'AU',
 		  						displayMode: 'regions',
 		  						resolution: 'provinces',
-		  						numberFormat:'.##'
+		  						numberFormat:'.##',
+		  						colorAxis: {colors: ['blue', 'green']}
 		  						};
 		  	var access_chart = new google.visualization.GeoChart(document.getElementById('access_chart'));
         	access_chart.draw(access_data, access_options);
