@@ -58,8 +58,4 @@ div#main{
 	background-color: #FFFFFF;
 	border: 1px solid #990000;
 	padding: 8px;
-	width: 1008px;
-	float:left;
-	overflow:scroll;
-	overflow-y: hidden;
 }

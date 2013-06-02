@@ -150,15 +150,16 @@ function showChart(chart)
 						<td id="usage_chart"></td><td id="speeds_chart"></td><td id="access_chart"></td>
 					</tr>
 				</table> -->
-				<NOSCRIPT>Javascript is required for this page to function.</NOSCRIPT>
-				<INPUT type="button" value="Usage" onClick="showChart('usage')"/>&nbsp;
-				<INPUT type="button" value="Speeds" onClick="showChart('speeds')"/>&nbsp;
-				<INPUT type="button" value="Access" onClick="showChart('access')"/>
+				<center>
+					<NOSCRIPT>Javascript is required for this page to function.</NOSCRIPT>
+					<INPUT type="button" value="Usage" onClick="showChart('usage')"/>&nbsp;
+					<INPUT type="button" value="Speeds" onClick="showChart('speeds')"/>&nbsp;
+					<INPUT type="button" value="Access" onClick="showChart('access')"/>
 				
-				<DIV id = "usage_chart"></DIV>
-				<DIV id = "speeds_chart" style="display:none; position: relative;"></DIV>
-				<DIV id = "access_chart" style="display:none; position: relative;"></DIV>
-				
+					<DIV id = "usage_chart"></DIV>
+					<DIV id = "speeds_chart" style="display:none; position: relative;"></DIV>
+					<DIV id = "access_chart" style="display:none; position: relative;"></DIV>
+				</center>
 			</div>
 			<div id = "footer">
 				Powered by Google Chart API.
