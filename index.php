@@ -2,8 +2,8 @@
 <HTML>
 	<HEAD>
 		<link rel="stylesheet" type="text/css" href="css/main.css"></link>
-		<script type="text/javascript" src = "../js/jsapi.js"></script>
-		<script type="text/javascript" src = "../js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src = "js/jsapi.js"></script>
+		<script type="text/javascript" src = "js/jquery-1.9.1.min.js"></script>
 		<script>
 			// Load the Visualization API and the piechart package.
 			google.load('visualization', '1.0', {'packages':['corechart', 'geochart']});
