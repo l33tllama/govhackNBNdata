@@ -70,14 +70,14 @@ function drawChart()
 
 	//Set chart options
 	var options_usage = { 'title':'Australian Internet Usage in TB by Service Type',
-					  'width':800,
+					  'width':1000,
 					  'height':640,
 					  vAxis :{maxValue:16},
 					  tooltip: {isHtml: true},
 					};
 					//Set chart options
 	var options_speeds = { 'title':"Australian Internet Speeds in 000's of connections by Speed",
-					  'width':800,
+					  'width':1000,
 					  'height':640,
 					  vAxis :{maxValue:16},
 					  tooltip: {isHtml: true},
@@ -92,8 +92,8 @@ function drawChart()
 	speeds_chart.draw(data_speeds, options_speeds);
 
 	var access_options = { 'title':'Households and Small Businesses connected', 
-						'width': 800,
-						'height': 575,
+						'width': 1000,
+						'height': 577,
 						region: 'AU',
 						displayMode: 'regions',
 						resolution: 'provinces',
